@@ -3,6 +3,7 @@ const User = require('../models/User');
 
 module.exports = {
     async init(req, res) {
+        res.clearCookie('username');
         return res.render('login/login');
     },
 
@@ -14,6 +15,7 @@ module.exports = {
         const { username, password } = req.body;
         let user = await User.findOne({ username, password });
         if (user) {
+            res.cookie('username', username, { maxAge: 500000 });
             res.render('menu/menu');
         } else {
             res.render('login/nonauthorized')
