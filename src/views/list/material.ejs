@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="/stylesheets/uikit.min.css">
+    <script src="/javascripts/uikit.min.js"></script>
+    <script src="/javascripts/uikit-icons.min.js"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <title>Solicitações - Agendamentos FIAP</title>
+</head>
+
+<body class="uk-container">
+    <header class="uk-margin-bottom">
+        <div class="uk-card uk-card-primary uk-card-body">
+            <h3 class="uk-card-title">Solicitações - FIAP</h3>
+            <p>Sistema para agendamento e alerta de salas</p>
+        </div>
+        <nav class="uk-navbar-container" uk-navbar>
+            <div class="uk-navbar-left">
+
+                <ul class="uk-navbar-nav">
+                    <li class="uk-active"><a href="/menu">Home</a></li>
+                    <li>
+                        <a href="#">Solicitações</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li><a href="/request/room">Sala</a></li>
+                                <li><a href="/request/resource">Material</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">Consultar</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li><a href="/list/room">Sala</a></li>
+                                <li><a href="/list/resource">Material</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+    <main>
+        <table class="uk-table uk-table-hover">
+            <thead>
+                <th>ID</th>
+                <th>Professor</th>
+                <th>Material</th>
+                <th>Sala</th>
+                <th>Data</th>
+                <th>Periodo</th>
+                <th>Remover</th>
+            </thead>
+            <tbody>
+                <!-- <p><%- JSON.stringify(result) %></p>  -->
+                <% for(let material of result) { %>
+                <tr>
+                    <td>
+                        <%= material.id %>
+                    </td>
+                    <td>
+                        <%= material.teacher %>
+                    </td>
+                    <td>
+                        <%= material.resource %>
+                    </td>
+                    <td>
+                        <%= material.room %>
+                    </td>
+                    <td>
+                        <%= material.date %>
+                    </td>
+                    <td>
+                        <%= material.period %>
+                    </td>
+                    <td>
+                        <a class="uk-icon-link" uk-icon="trash"
+                            href="/remove/resource/<%= material.id %>"></a>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </main>
+</body>
+
+</html>

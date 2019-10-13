@@ -6,6 +6,10 @@ module.exports = {
         return res.render('login/login');
     },
 
+    async menu(req, res) {
+        return res.render('menu/menu');
+    },
+
     async login(req, res) {
         const { username, password } = req.body;
         let user = await User.findOne({ username, password });

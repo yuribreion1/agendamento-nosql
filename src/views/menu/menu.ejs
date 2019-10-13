@@ -11,8 +11,8 @@
     <script src="/javascripts/uikit-icons.min.js"></script>
     <script src="/javascripts/path.js"></script>
     <script>
-        var cadastrado = getUrlParameter('cadastrado');
-        var removido = getUrlParameter('removido');
+        var cadastrado = getUrlParameter('registered');
+        var removido = getUrlParameter('removed');
         if (cadastrado == 'true') {
             alert('Solicitação cadastrada com sucesso');
         } 
@@ -36,23 +36,23 @@
     <main>
         <div class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid>
             <div>
-                <a href="/solicitar/sala" class="uk-card uk-card-secondary uk-card-body">
+                <a href="/request/room" class="uk-card uk-card-secondary uk-card-body">
                         <h3 class="uk-card-title">Agendamento de sala</h3>
                     <p>Encontre e reserve uma sala para sua aula</p>
                 </a>
             </div>
             <div>
-                <a href="/solicitar/material" class="uk-card uk-card-secondary uk-card-body">
+                <a href="/request/resource" class="uk-card uk-card-secondary uk-card-body">
                     <h3 class="uk-card-title">Solitação de materiais</h3>
                     <p>Canetas, projetores e demais itens</p>
                 </a>
             </div>
             <div>
-                <a href="/consultar/sala" class="uk-card uk-card-default uk-card-body">
+                <a href="/list/room" class="uk-card uk-card-default uk-card-body">
                     <h3 class="uk-card-title">Acompanhar solicitações de sala</h3>
                     <p>Veja as solicitações já criadas para salas</p>
                 </a>
-                <a href="/consultar/material" class="uk-card uk-card-default uk-card-body uk-margin">
+                <a href="/list/resource" class="uk-card uk-card-default uk-card-body uk-margin">
                     <h3 class="uk-card-title">Acompanhar solicitações de material</h3>
                     <p>Verifique os pedidos de materiais já feitos</p>
                 </a>

@@ -1,10 +1,22 @@
 const Material = require('../models/Material');
 
 module.exports = {
+
+    async request(req, res) {
+        return res.render('request/material');
+    },
+
     async store(req, res) {
         const { teacher, resource, room, date, period} = req.body;
         const materials = await Material.create({ teacher, resource, room, date, period })
-        return res.json(materials);
+        return res.format({
+            html: () => {
+                res.redirect('/menu?registered=true')
+            }, 
+            json: () => {
+                res.json(materials);
+            }
+        })
     },
 
     async show(req, res) {
@@ -14,7 +26,14 @@ module.exports = {
 
     async index(req, res) {
         const materials = await Material.find();
-        return res.json(materials);
+        return res.format({
+            html:() => {
+                res.render('list/material', { result: materials });
+            },
+            json:() => {
+                res.json(rooms);
+            }
+        })
     },
 
     async update(req, res) {
@@ -24,6 +43,6 @@ module.exports = {
 
     async destroy(req, res) {
         await Material.findByIdAndRemove(req.params.id);
-        return res.send();
+        return res.redirect('/menu?removed=true');
     }
 }
