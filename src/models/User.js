@@ -7,4 +7,6 @@ const UserSchema = new mongoose.Schema(
     }
 );
 
+mongoose.set('useFindAndModify', false);
+
 module.exports = mongoose.model('User', UserSchema);
