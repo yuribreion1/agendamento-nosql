@@ -2,13 +2,39 @@
 const User = require('../models/User');
 
 module.exports = {
+    async init(req, res) {
+        return res.render('login/login');
+    },
+
+    async login(req, res) {
+        const { username, password } = req.body;
+        let user = await User.findOne({ username, password });
+        if (user) {
+            res.render('menu/menu');
+        } else {
+            res.render('login/nonauthorized')
+        }
+    },
+
+    async registration(req, res) {
+        return res.render('login/registration');
+    },
+
     async store(req, res) {
-        const { username, password, active } = req.body;
+        const { username, password } = req.body;
         let user = await User.findOne({ username });
         if (!user) {
+            active = true;
             user = await User.create({ username, password, active })   
         }
-        return res.json(user);
+        return res.format({
+            html: () => {
+                res.render('login/login')
+            },
+            json: () => {
+                res.json(user);
+            }
+        })
     },
 
     async show(req, res) {

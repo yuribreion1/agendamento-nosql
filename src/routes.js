@@ -4,6 +4,11 @@ const SessionControllers = require('./controllers/SessionController');
 const RequestRoomControllers = require('./controllers/RequestRoomController');
 const RequestMaterialControllers = require('./controllers/RequestMaterialController');
 
+// Index
+routes.get('/', SessionControllers.init);
+routes.get('/registration', SessionControllers.registration);
+routes.post('/login', SessionControllers.login);
+
 // User session routes
 routes.post('/sessions', SessionControllers.store);  
 routes.put('/sessions/:id', SessionControllers.update);

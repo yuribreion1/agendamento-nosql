@@ -3,9 +3,13 @@ const routes = require('./src/routes');
 const mongoose = require('mongoose'); 
 const bodyParser = require('body-parser');
 const appInsights = require("applicationinsights");
+const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, './public')));
+app.set('views', './src/views');
+app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(routes);
 appInsights.setup("bfc056c5-787f-435f-b4cc-7d2973513fc8")
